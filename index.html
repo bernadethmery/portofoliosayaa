@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portofolio Saya</title>
+<style>
+  /* Reset & base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: #dde9f1;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Container */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  /* Header & Navigation */
+  header {
+    background: #3f51b5;
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-weight: 600;
+  }
+  nav a {
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    background: #283593;
+  }
+  /* Hero Section */
+  #hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px 60px;
+  }
+  #hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #303f9f;
+  }
+  #hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    color: #5c6bc0;
+  }
+  /* About Me Section */
+  section {
+    padding: 60px 20px;
+  }
+  h2.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #3f51b5;
+    border-bottom: 3px solid #3f51b5;
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+  #about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #444;
+  }
+  /* Skills */
+  #skills .skills-list {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  .skill-item {
+    background: #3f51b5;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(63,81,181,0.3);
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .skill-item:hover {
+    transform: scale(1.1);
+  }
+  /* Projects Grid */
+  #projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(229, 233, 233, 0);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  }
+  .project-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .project-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  .project-content h3 {
+    margin-bottom: 10px;
+    color: #3f51b5;
+  }
+  .project-content p {
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1;
+  }
+  .project-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+  }
+  .project-links a {
+    background: #3f51b5;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(63,81,181,0.3);
+    transition: background 0.3s ease;
+  }
+  .project-links a:hover {
+    background: #283593;
+  }
+  /* Contact Section */
+  #contact .contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  #contact .contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #3f51b5;
+  }
+  #contact .contact-form input,
+  #contact .contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  #contact .contact-form input:focus,
+  #contact .contact-form textarea:focus {
+    border-color: #3f51b5;
+    outline: none;
+  }
+  #contact .contact-form button {
+    background: #3f51b5;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 6px 15px rgba(63,81,181,0.4);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  #contact .contact-form button:hover {
+    background: #283593;
+    transform: scale(1.05);
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #666;
+    font-size: 0.9rem;
+    background: #e3e6f3;
+    margin-top: 40px;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    #hero h1 {
+      font-size: 2.4rem;
+    }
+    nav {
+      gap: 15px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">Tentang Saya</a>
+    <a href="#skills">Keahlian</a>
+    <a href="#projects">Proyek</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+</header>
+
+<main>
+  <section id="hero" class="container">
+    <h1>Halo, Saya Mery Tama Uli</h1>
+    <p>Saya adalah seorang pekerja keras yang memiliki tanggung jawab dan komitmen dalam pekerjaan dan kehidupan.</p>
+  </section>
+
+     <!-- CONTENT 1 -->
+    <center>
+    <img src="fotopp.jpg" class="fotopp.jpg" class height="300px">
+    </center>
+    
+  <section id="about" class="container">
+    <h2 class="section-title">Tentang Saya</h2>
+    <p>
+      Saya terakhir memiliki pengalaman lebih dari lima tahun disalah satu perbankan BUMN di kota jakarta dan jobdesk yang dikerjakan sudah meliputi dilingkup Monitoring sistem,Operasional Channel hingga Analisa dan pembuatan laporan serta IT support.
+    </p>
+  </section>
+
+  <section id="skills" class="container">
+    <h2 class="section-title">Keahlian</h2>
+    <div class="skills-list">
+      <div class="skill-item">Ms.Office</div>
+      <div class="skill-item">Basic Web</div>
+      <div class="skill-item">Basic JavaScript</div>
+      <div class="skill-item">Basic CSS</div>
+      <div class="skill-item">Pemahaman Sistem</div>
+      <div class="skill-item">Analisa & Laporan</div>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2 class="section-title">Pengalaman</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img class="project-image" src="logomandiri.jpg" alt="Project 1"/>
+        <div class="project-content">
+          <h3>Staff Executive</h3>
+          <p>Bekerja sebagai Staff IT dan Monitoring ATM pada sebuah Bank BUMN di Jakarta.</p>
+          <div class="project-links">
+            <a href="https://www.linkedin.com/in/mery-tama-uli-a34392171" target="_blank" rel="noopener">Linkedin</a>
+            <a href="https://id.jobstreet.com/id/profile/me/resume?mode=read" target="_blank" rel="noopener">JobStreet</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img class="project-image" src="fotokedai.jpeg" alt="Project 2"/>
+        <div class="project-content">
+          <h3>Wirausaha Kedai Mm Evi</h3>
+          <p>Pada tahun Mei 2023 - 2024 mencoba untuk buka usaha dengan terjun langsung mulai dari proses penyediaan stock hingga penjualan dan laporan hasil omset.</p>
+          <div class="project-links">
+            <a href="fotokedai.jpeg" target="_blank" rel="noopener">Lokasi</a>
+            <a href="https://vt.tiktok.com/ZShQQ514V/" target="_blank" rel="noopener">Dokumentasi</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img class="project-image" src="fotomerymotor.jpeg" alt="Project 3"/>
+        <div class="project-content">
+          <h3>Wirausaha Jual-beli Kendaraan Bermotor</h3>
+          <p>Dari Januari 2025 sampai saat ini mencoba bisnis dalam bidang jual beli kendaraan bermotor,
+            dan sampingan pekerjaan paruh waktu di applikasi shoopefood.</p>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener">Lokasi</a>
+            <a href="https://www.instagram.com/merryst0re?igsh=aGcwcWJvamFkZGpn&utm_source=qr" target="_blank" rel="noopener">Dokumentasi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2 class="section-title">Kontak</h2>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <label for="name">Nama Lengkap</label>
+      <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Masukkan email Anda" />
+
+      <label for="message">Pesan</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan Anda"></textarea>
+
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Mery Tama Uli. Hak Cipta Dilindungi.
+</footer>
+
+<script>
+  // Highlight active nav link based on scroll position
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 60;
+      if(window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Contact form submission handler (fake)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name = e.target.name.value;
+    alert('Terima kasih, ' + name + '! Pesan Anda sudah kami terima.');
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
+
